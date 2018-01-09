@@ -8,39 +8,40 @@ DEBUT
 	piece<-faux;
 	Prise<-0;
 	Allumettes<-21;
-	piece<-(Aleatoire(Vrai/Faux));
+	piece<-(Aleatoire(Vrai/Faux)); // Vrai
 	ECRIRE("Face vous commencez, pile Botlumette commence.");
 	ECRIRE("Appuyer sur une touche pour lancer la piece.");
 	LIRE();
-	SI piece ALORS
+	SI piece ALORS //Vrai
 		ECRIRE("Face, vous commencez.") 
 	SINON
 		ECRIRE("Pile, Botlumette commence.");
 	FINSI;
 	REPETER
-		SI (Allumettes>=1) ET piece ALORS
+		SI (Allumettes>=1) ET piece ALORS //Vrai et Vrai = Vrai
 			ECRIRE("Joueur 1 à vous");
-			ECRIRE("Il reste ",Allumettes," Allumettes, combien voulez vous en prendre ?");
-			LIRE (Prise);
-			SI (Prise>0) ET (Prise<4);
-				Allumettes<-Allumettes-Prise;
-				SI Allumettes<=0 ALORS
+			ECRIRE("Il reste ",Allumettes," Allumettes, combien voulez vous en prendre ?"); //Allumettes=21
+			LIRE (Prise); //Prise=2
+			SI (Prise>0) ET (Prise<4); // Vrai et Vrai = Vrai
+				Allumettes<-Allumettes-Prise; //Allumettes=21-2=19
+				SI Allumettes<=0 ALORS //Faux
 					writeln("Botlumette a gagne.") 
 				SINON
-					writeln("Il rest donc ",Allumettes," allumettes.");
+					writeln("Il rest donc ",Allumettes," allumettes."); //Allumettes=19
 					piece<-vrai;
 					ECRIRE("Tour de Botlumette");
-					Prise<-((Allumettes-1) MOD 4);
-					SI Prise=0 ALORS 
+					Prise<-((Allumettes-1) MOD 4); //Prise=(19-1) MOD 4 = 2
+					SI Prise=0 ALORS //Faux
 						Prise<-1;
 					FINSI;
-					Allumettes<-Allumettes-Prise;
-					ECRIRE("Botlumette prend ", Prise," Allumettes.");
-					SI Allumettes<=0 ALORS 
+					Allumettes<-Allumettes-Prise; //19-2=17
+					ECRIRE("Botlumette prend ", Prise," Allumettes."); //Prise = 2
+					SI Allumettes<=0 ALORS //Faux
 						writeln("Le joueur a gagne.");
 					FINSI;
+				FINSI;
 			FINSI;
 		FINSI;
-	JUSQU"A Allumettes<=0;
+	JUSQU"A Allumettes<=0; //Faux
 
 FIN

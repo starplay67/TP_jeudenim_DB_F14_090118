@@ -11,31 +11,31 @@ DEBUT
 	REPETER
 		SI tour1 ALORS
 			ecrire("Joueur 1 à vous");
-			ecrire("Il reste ",Allumettes," Allumettes, combien voulez vous en prendre ?");
-			lire(Prise);
+			ecrire("Il reste ",Allumettes," Allumettes, combien voulez vous en prendre ?"); //Allumettes = 21
+			lire(Prise); //Prise=3
 			SI (Prise>0) ET (Prise<4) ALORS
-				Allumettes<-Allumettes-Prise;
-				SI Allumettes<=0 ALORS 
+				Allumettes<-Allumettes-Prise; //Allumettes<-21-3=18
+				SI Allumettes<=0 ALORS // Faux
 					ecrire("Le joueur 1 a gagne")
 				SINON
-					ecrire("Il reste donc ",Allumettes," allumettes.");
-					tour1<-faux;
+					ecrire("Il reste donc ",Allumettes," allumettes."); // Allumettes = 18
+					tour1<-faux; 
 				FINSI;
-				SI Allumettes>=1 ET pas(tour1) ALORS
+				SI Allumettes>=1 ET pas(tour1) ALORS // Vrai ET Vrai = Vrai
 					ecrire("Joueur 2 à vous");
-					ecrire("Il reste ",Allumettes," Allumettes, combien voulez vous en prendre ?");
-					lire(Prise); 
-					SI (Prise>0) ET (Prise<4) ALORS
-						Allumettes<-Allumettes-Prise;
-						SI Allumettes<=0 ALORS 
+					ecrire("Il reste ",Allumettes," Allumettes, combien voulez vous en prendre ?"); // Allumettes = 18
+					lire(Prise); // 1
+					SI (Prise>0) ET (Prise<4) ALORS //Vrai ET Vrai = Vrai
+						Allumettes<-Allumettes-Prise; //Allumettes = 18-1 = 17
+						SI Allumettes<=0 ALORS //Faux
 							ecrire("Le joueur 2 a gagne") 
 						SINON 
-							ecrire("Il reste donc ",Allumettes," allumettes.")
+							ecrire("Il reste donc ",Allumettes," allumettes.") // Allumettes = 17
 							tour1<-vrai;
 						FINSI;
 					FINSI;
 				FINSI;
 			FINSI;
 		FINSI;
-	JUSQU'A Allumettes<=0;
+	JUSQU'A Allumettes<=0; // Faux
 FIN
