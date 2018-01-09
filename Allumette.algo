@@ -1,0 +1,41 @@
+PROGRAMME Allumette;
+
+VAR
+	Allumettes,Prise,: entier;
+	tour1: booleen;
+
+DEBUT
+	tour1<-vrai;
+	Allumettes<-21;
+	Prise<-0;
+	REPETER
+		SI tour1 ALORS
+			ecrire("Joueur 1 à vous");
+			ecrire("Il reste ",Allumettes," Allumettes, combien voulez vous en prendre ?");
+			lire(Prise);
+			SI (Prise>0) ET (Prise<4) ALORS
+				Allumettes<-Allumettes-Prise;
+				SI Allumettes<=0 ALORS 
+					ecrire("Le joueur 1 a gagne")
+				SINON
+					ecrire("Il reste donc ",Allumettes," allumettes.");
+					tour1<-faux;
+				FINSI;
+				SI Allumettes>=1 ET pas(tour1) ALORS
+					ecrire("Joueur 2 à vous");
+					ecrire("Il reste ",Allumettes," Allumettes, combien voulez vous en prendre ?");
+					lire(Prise); 
+					SI (Prise>0) ET (Prise<4) ALORS
+						Allumettes<-Allumettes-Prise;
+						SI Allumettes<=0 ALORS 
+							ecrire("Le joueur 2 a gagne") 
+						SINON 
+							ecrire("Il reste donc ",Allumettes," allumettes.")
+							tour1<-vrai;
+						FINSI;
+					FINSI;
+				FINSI;
+			FINSI;
+		FINSI;
+	JUSQU'A Allumettes<=0;
+FIN

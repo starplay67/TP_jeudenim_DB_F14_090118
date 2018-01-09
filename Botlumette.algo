@@ -1,0 +1,46 @@
+PROGRAMME Allumette;
+
+VAR
+	Allumettes,Prise: entier;
+	piece: booleen;
+
+DEBUT
+	piece<-faux;
+	Prise<-0;
+	Allumettes<-21;
+	piece<-(Aleatoire(Vrai/Faux));
+	ECRIRE("Face vous commencez, pile Botlumette commence.");
+	ECRIRE("Appuyer sur une touche pour lancer la piece.");
+	LIRE();
+	SI piece ALORS
+		ECRIRE("Face, vous commencez.") 
+	SINON
+		ECRIRE("Pile, Botlumette commence.");
+	FINSI;
+	REPETER
+		SI (Allumettes>=1) ET piece ALORS
+			ECRIRE("Joueur 1 à vous");
+			ECRIRE("Il reste ",Allumettes," Allumettes, combien voulez vous en prendre ?");
+			LIRE (Prise);
+			SI (Prise>0) ET (Prise<4);
+				Allumettes<-Allumettes-Prise;
+				SI Allumettes<=0 ALORS
+					writeln("Botlumette a gagne.") 
+				SINON
+					writeln("Il rest donc ",Allumettes," allumettes.");
+					piece<-vrai;
+					ECRIRE("Tour de Botlumette");
+					Prise<-((Allumettes-1) MOD 4);
+					SI Prise=0 ALORS 
+						Prise<-1;
+					FINSI;
+					Allumettes<-Allumettes-Prise;
+					ECRIRE("Botlumette prend ", Prise," Allumettes.");
+					SI Allumettes<=0 ALORS 
+						writeln("Le joueur a gagne.");
+					FINSI;
+			FINSI;
+		FINSI;
+	JUSQU"A Allumettes<=0;
+
+FIN
